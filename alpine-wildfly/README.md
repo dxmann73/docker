@@ -6,6 +6,13 @@ alpine-wildfly
 
 [Image on Docker Hub](https://hub.docker.com/r/dxmann73/alpine-wildfly/).
 
+
+Build
+--------
+```
+docker build -t dxmann73/alpine-wildfly .
+```
+
 Usage
 --------
 
