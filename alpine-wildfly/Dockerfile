@@ -3,16 +3,20 @@ FROM dxmann73/alpine-openjdk
 # based on alpine-wildfly from Jørgen Mittet <njmittet@gmail.com>
 MAINTAINER David Mann <dxmann73@gmail.com>
 
-ENV WILDFLY_VERSION 10.1.0.Final
+# TODO check adam bien wildfly image with serverAdmin chuser stuff!
+ENV WILDFLY_VERSION 11.0.0.Final
 ENV JBOSS_HOME /opt/jboss/wildfly
-ENV STANDALONE standalone
+ENV DEPLOYMENT_DIR ${JBOSS_HOME}/standalone/deployments/
 
 USER root
-RUN mkdir -p /opt/jboss && adduser -D -h /opt/jboss jboss && apk update && apk add curl && rm -rf /var/cache/apk/*
+RUN mkdir -p /opt/jboss && adduser -D -h /opt/jboss jboss
 
 USER jboss
 WORKDIR /opt/jboss
-RUN curl -O http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.zip && unzip wildfly-$WILDFLY_VERSION.zip && mv $HOME/wildfly-$WILDFLY_VERSION $HOME/wildfly && rm wildfly-$WILDFLY_VERSION.zip
+RUN curl -O http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.zip \
+    && unzip wildfly-$WILDFLY_VERSION.zip \
+    && mv $HOME/wildfly-$WILDFLY_VERSION $HOME/wildfly \
+    && rm wildfly-$WILDFLY_VERSION.zip
 
+ENTRYPOINT ${JBOSS_HOME}/bin/standalone.sh -b=0.0.0.0
 EXPOSE 8080 9990
-CMD /opt/jboss/wildfly/bin/standalone.sh --server-config=$STANDALONE.xml -b 0.0.0.0
