@@ -2,6 +2,9 @@
 version: '3.2'
 volumes:
   zookeeper-logs:
+  zookeeper-data:
+  kafka-logs:
+  kafka-data:
 services:
   zookeeper:
     image: zookeeper-single
@@ -15,6 +18,7 @@ services:
         target: /var/log/zookeeper
         volume:
           nocopy: true
+      - zookeeper-data:/var/opt/zookeeper
   kafka:
     image: kafka-single
     network_mode: host
@@ -25,4 +29,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: localhost:181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - kafka-logs:/var/log/kafka
+      - kafka-data:/var/opt/kafka
 
