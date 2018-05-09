@@ -1,5 +1,7 @@
 ---
-version: '2'
+version: '3.2'
+volumes:
+  zookeeper-logs:
 services:
   zookeeper:
     image: zookeeper-single
@@ -7,7 +9,12 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
-
+    volumes:
+      - type: volume
+        source: zookeeper-logs
+        target: /var/log/zookeeper
+        volume:
+          nocopy: true
   kafka:
     image: kafka-single
     network_mode: host
