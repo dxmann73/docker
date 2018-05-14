@@ -1,5 +1,5 @@
-alpine-wildfly
-==============
+wildfly-standalone
+==================
 
 ### based on alpine-wildfly from Jørgen Mittet https://github.com/njmittet/alpine-wildfly
 [Docker](https://www.docker.com/) image for running Java EE applications in [Wildfly](http://www.wildfly.org/). Based on [Alpine Linux](http://alpinelinux.org/) and [OpenJDK](http://openjdk.java.net/). Use this image as base image for you application image.
