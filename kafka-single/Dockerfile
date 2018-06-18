@@ -1,4 +1,5 @@
 FROM dxmann73/alpine-openjdk
+
 # based on rawmind0/alpine-kafka
 MAINTAINER David Mann <dxmann73@gmail.com>
 

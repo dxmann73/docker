@@ -2,7 +2,7 @@
 
 docker-compose down
 
-# TODO add pause here :-)))
+sleep 10
 
 docker volume rm docker_kafka-data
 docker volume rm docker_kafka-logs
