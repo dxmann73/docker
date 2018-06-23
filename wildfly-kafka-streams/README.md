@@ -11,6 +11,11 @@ Kafka Streams libraries live directly in the application server to allow for rea
 Build
 --------
 ```
+docker build -t dxmann73/wildfly-kafka-streams .
+```
+
+Local:
+```
 docker build -t wildfly-kafka-streams .
 ```
 

@@ -17,6 +17,11 @@ Directory layout according to the [Filesystem Hierarchy Standard](https://server
 Build and run the zookeeper server:
 --------------------------------------
 ```
+docker build -t dxmann73/zookeeper-single .
+```
+
+Local:
+```
 docker build -t zookeeper-single .
 ```
 

@@ -10,15 +10,21 @@ wildfly-standalone
 Build
 --------
 ```
-docker build -t dxmann73/alpine-wildfly .
+docker build -t dxmann73/wildfly-standalone .
 ```
+
+Local:
+```
+docker build -t wildfly-standalone .
+```
+
 
 Usage
 --------
 
 Create a Dockerfile in your project root:
 ~~~~
-FROM dxmann73/wildfly
+FROM dxmann73/wildfly-standalone
 ADD ./target/application.war /opt/jboss/wildfly/standalone/deployments/application.war
 ~~~~
 

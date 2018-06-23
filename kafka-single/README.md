@@ -18,6 +18,11 @@ Directory layout according to the [Filesystem Hierarchy Standard](https://server
 Build and usage
 --------
 ```
+docker build -t dxmann73/kafka-single .
+```
+
+Local:
+```
 docker build -t kafka-single .
 ```
 
