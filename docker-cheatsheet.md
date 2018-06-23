@@ -41,8 +41,15 @@ docker logs zookeeper-single
 ```
 docker ps
 docker ps -a
+```
+
+# remove containers and images
+
+```
 docker ps -q -f status=created | xargs --no-run-if-empty docker rm
 docker ps -q -f status=exited | xargs --no-run-if-empty docker rm
+
+docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi
 ```
 
 
