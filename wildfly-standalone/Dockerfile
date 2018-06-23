@@ -3,7 +3,7 @@ FROM dxmann73/alpine-openjdk
 # based on alpine-wildfly from Jørgen Mittet <njmittet@gmail.com>
 MAINTAINER David Mann <dxmann73@gmail.com>
 
-ENV WILDFLY_VERSION 11.0.0.Final
+ENV WILDFLY_VERSION 12.0.0.Final
 ENV JBOSS_HOME /opt/jboss/wildfly
 ENV DEPLOYMENT_DIR ${JBOSS_HOME}/standalone/deployments/
 
