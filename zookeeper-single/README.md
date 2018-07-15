@@ -20,17 +20,14 @@ Build and run the zookeeper server:
 docker build -t dxmann73/zookeeper-single .
 ```
 
-Local:
-```
-docker build -t zookeeper-single .
-```
-
 ~~~~
-need port: docker run -d --rm -p 2181:2181 --name zookeeper zookeeper-single
+# you need to bind the port:
+docker run -d --rm -p 2181:2181 --name zookeeper dxmann73/zookeeper-single
 
-docker stop zookeeper-single
-docker logs zookeeper-single
-docker start zookeeper-single
+# to attach
+docker exec -it zookeeper bash
+
+docker stop zookeeper
 ~~~~
 
 
