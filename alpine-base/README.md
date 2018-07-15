@@ -9,7 +9,3 @@ Build
 ```
 docker build -t dxmann73/alpine-base .
 ```
-local
-```
-docker build -t alpine-base .
-```
