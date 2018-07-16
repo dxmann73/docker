@@ -4,7 +4,10 @@ FROM dxmann73/alpine-openjdk
 MAINTAINER David Mann <dxmann73@gmail.com>
 
 # default value for zookeeper.connect
-ENV ZK_HOSTS=192.168.99.100:2181
+ENV DOCKER_MACHINE_IP=192.168.99.100
+ENV ZK_HOSTS=${DOCKER_MACHINE_IP}:2181 \
+    ADVERTISED_HOST=${DOCKER_MACHINE_IP} \
+    ADVERTISED_PORT=9092
 
 ENV SERVICE_HOME=/opt/kafka \
     SERVICE_NAME=kafka \
@@ -41,5 +44,8 @@ WORKDIR $SERVICE_HOME
 
 EXPOSE 9092
 # we use CMD here because we want to be able to modify the startup sequence
-CMD ${SERVICE_HOME}/bin/kafka-server-start.sh config/server.properties --override zookeeper.connect=${ZK_HOSTS}
+CMD ${SERVICE_HOME}/bin/kafka-server-start.sh config/server.properties \
+    --override zookeeper.connect=${ZK_HOSTS} \
+    --override advertised.host.name=${ADVERTISED_HOST} \
+    --override advertised.port=${ADVERTISED_PORT}
 
