@@ -15,10 +15,10 @@ docker rmi -f centos
 # run/stop
 ```
 docker run -d dxmann73/zookeeper-single
-docker run -d -it --rm -p 9092:9092 kafka-single
 docker run -d     --rm -p 2181:2181 --name zookeeper zookeeper-single
 docker run -d     --rm -p 9092:9092 --name kafka kafka-single
 docker run    -it      -p 9092:9092 kafka-single
+docker run    -it --rm -p 9092:9092 kafka-single
 
 docker stop kafka-single
 ```
@@ -31,7 +31,10 @@ docker info
 docker inspect 7296123ed721
 docker inspect 7296123ed721 | grep IP
 
+# when started with bash
 docker attach kafka-single
+# otherwise
+docker exec -it <containerId> bash
 
 docker logs kafka-single
 docker logs zookeeper-single
