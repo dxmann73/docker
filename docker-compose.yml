@@ -1,35 +1,52 @@
 ---
 version: '3.2'
-volumes:
-  zookeeper-logs:
-  zookeeper-data:
-  kafka-logs:
-  kafka-data:
+# https://docs.docker.com/compose/compose-file/#long-syntax-3
 services:
   zookeeper:
-    image: zookeeper-single
-    network_mode: host
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
+    image: dxmann73/zookeeper-single
+    container_name: zookeeper
+    hostname: zooserver
+    networks:
+      - kafkanet
+    ports:
+      - 2181:2181
     volumes:
-      - type: volume
-        source: zookeeper-logs
-        target: /var/log/zookeeper
-        volume:
-          nocopy: true
-      - zookeeper-data:/var/opt/zookeeper
+      - "/c/Users/dave/dockervolumes/zookeeper-single/logs:/var/log/zookeeper"
+      - "/c/Users/dave/dockervolumes/zookeeper-single/data:/var/opt/zookeeper"
   kafka:
-    image: kafka-single
-    network_mode: host
+    image: dxmann73/kafka-single
+    container_name: kafka
     depends_on:
       - zookeeper
+    hostname: kafkaserver
+    networks:
+      - kafkanet
+    ports:
+      - 9092:9092
     environment:
-      KAFKA_BROKER_ID: 0
-      KAFKA_ZOOKEEPER_CONNECT: localhost:181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      ZK_HOSTS: zookeeper:2181
+      ADVERTISED_HOST: kafkaserver
+      ADVERTISED_PORT: 9092
+      # later / check if needed
+      # KAFKA_BROKER_ID: 0
+      # KAFKA_ZOOKEEPER_CONNECT: localhost:181
+      # KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      # KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
-      - kafka-logs:/var/log/kafka
-      - kafka-data:/var/opt/kafka
+      - "/c/Users/dave/dockervolumes/kafka-single/logs:/var/log/kafka"
+      - "/c/Users/dave/dockervolumes/kafka-single/data:/var/opt/kafka"
+  kafka_manager:
+      image: dxmann73/kafka-manager
+      container_name: kafkamanager
+      depends_on:
+        - kafka
+      networks:
+        - kafkanet
+      ports:
+        - 9000:9000
+      environment:
+        ZK_HOSTS: "zookeeper:2181"
 
+networks:
+  kafkanet:
+    driver: bridge
