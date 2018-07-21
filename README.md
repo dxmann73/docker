@@ -9,10 +9,7 @@ Set up VirtualBox port forwarding in Settings > Network > Erweitert
   => see https://www.youtube.com/watch?v=_CZar_4_vbk#
 
 # TODOs
-Sort images and push them to the dxmann73 docker registry
-- Volumes? See /tmp for an older version
-  - find a way to mount this into the local FS - I want to see those logs!
-  - mounting the volume directly failed with "Permission denied", can't seem to set this to a+rw
+- Sort images and push them to the dxmann73 docker registry
 - alias ll in alpine bash and change prompt to show cwd
 
 
