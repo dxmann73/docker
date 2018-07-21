@@ -1,7 +1,7 @@
 kafka-manager
 =========================
-Contains a single server with (kafka-manager)[https://github.com/yahoo/kafka-manager/releases] v1.3.3.18 installed on it.
-Need to build it with (sbt)[https://stackoverflow.com/questions/46650747/can-i-use-yahoo-kafka-manager-if-i-dont-have-sbt-locally]
+Contains a single server with [kafka-manager](https://github.com/yahoo/kafka-manager/releases) v1.3.3.18 installed on it.
+Need to build it with [sbt](https://stackoverflow.com/questions/46650747/can-i-use-yahoo-kafka-manager-if-i-dont-have-sbt-locally)
 ```
 sbt clean dist
 ```
