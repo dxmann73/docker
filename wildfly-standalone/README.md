@@ -3,35 +3,25 @@ wildfly-standalone
 
 ### based on alpine-wildfly from Jørgen Mittet https://github.com/njmittet/alpine-wildfly
 [Docker](https://www.docker.com/) image for running Java EE applications in [Wildfly](http://www.wildfly.org/). Based on [Alpine Linux](http://alpinelinux.org/) and [OpenJDK](http://openjdk.java.net/). Use this image as base image for you application image.
-
 [Image on Docker Hub](https://hub.docker.com/r/dxmann73/alpine-wildfly/).
-
 
 Build
 --------
 ```
 docker build -t dxmann73/wildfly-standalone .
-```
-
-Local:
-```
+# Local:
 docker build -t wildfly-standalone .
 ```
 
-
 Usage
 --------
-
-Create a Dockerfile in your project root:
+Log files are in /opt/jboss/wildfly/standalone/log. In order to mount directories on the local host, you need to add them as shared folders in VirtualBox. By default, only C:\Users is mounted (as /c/Users, note the lowercase c. Also keep in mind that the shell is different from the docker machine)
 ~~~~
-FROM dxmann73/wildfly-standalone
-ADD ./target/application.war /opt/jboss/wildfly/standalone/deployments/application.war
-~~~~
-
-Build and run the application container:
-~~~~
-docker build -t application .
 docker run -it --rm application
+docker run -d  --rm --volume /c/Dropbox/dev/projects/docker/wildfly-standalone/logs:/opt/jboss/wildfly/standalone/log application
+
+# connect to the container 
+docker exec -it <containerId> bash
 ~~~~
 
 Configuration
@@ -39,11 +29,6 @@ Configuration
 [Start Wildfly](https://docs.jboss.org/author/display/WFLY10/Getting+Started+Guide#GettingStartedGuid0e-StartingWildFly10) with different configurations.
 
 The default Web profile requires no configuration.
-
-Start Wildfly with the Full profile: 
-~~~~
-docker run -it --rm -e STANDALONE=standalone-full application  
-~~~~
 
 TODO Add a custom configuration file to your Dockerfile:
 ~~~~

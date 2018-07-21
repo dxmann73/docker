@@ -3,7 +3,9 @@ Dockerfiles plus dependencies
 
 # windows 7 setup hints
 Docker Toolbox needs VirtualVM under Windows 7
+
 Set up VirtualBox port forwarding in Settings > Network > Erweitert 
+
   => see https://www.youtube.com/watch?v=_CZar_4_vbk#
 
 # TODOs

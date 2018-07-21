@@ -2,6 +2,7 @@ wildfly-kafka-streams
 ==============
 
 Wildfly standalone image with deployment target set up
+
 TODO make this target reference the build artifact directly
 
 Kafka Streams libraries live directly in the application server to allow for really thin wars 
