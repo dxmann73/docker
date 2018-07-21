@@ -17,5 +17,7 @@ RUN curl -O http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_
     && mv $HOME/wildfly-$WILDFLY_VERSION $HOME/wildfly \
     && rm wildfly-$WILDFLY_VERSION.zip
 
+RUN mkdir -p /opt/jboss/wildfly/standalone/log
+
 ENTRYPOINT ${JBOSS_HOME}/bin/standalone.sh -b=0.0.0.0
 EXPOSE 8080 9990
