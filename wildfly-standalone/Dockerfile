@@ -24,7 +24,8 @@ RUN unzip ${SERVICE_NAME}.zip \
  && chown -R ${SERVICE_USER}:${SERVICE_GROUP} ${SERVICE_LOG_DIR} \
  && chown -R ${SERVICE_USER}:${SERVICE_GROUP} ${DEPLOYMENT_DIR}
 
-# default and debug port
+# http and admin console ports
 EXPOSE 8080 9990
 
-ENTRYPOINT ${JBOSS_HOME}/bin/standalone.sh -b=0.0.0.0
+# TODO find a way to pass --debug from outside
+CMD ${JBOSS_HOME}/bin/standalone.sh --debug -b=0.0.0.0
