@@ -1,7 +1,7 @@
-# docker
+# Docker
 Dockerfiles plus dependencies
 
-# windows 7 setup hints
+# Windows 7 setup hints
 Docker Toolbox needs VirtualVM under Windows 7
 
 Set up VirtualBox port forwarding in Settings > Network > Erweitert 
@@ -11,6 +11,7 @@ Set up VirtualBox port forwarding in Settings > Network > Erweitert
 # TODOs
 - Sort images and push them to the dxmann73 docker registry
 - alias ll in alpine bash and change prompt to show cwd
+- LABEL maintainer since MAINTAINER is deprecated
 
 
 # docker compose

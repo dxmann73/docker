@@ -9,6 +9,9 @@ ENV SERVICE_USER=svcusr \
 
 RUN apk update \
  && apk add bash curl wget \
+ && apk add tzdata \
+ && cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
+ && apk del tzdata \
  && rm -rf /var/cache/apk/* \
  && mkdir /opt
 
