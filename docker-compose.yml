@@ -34,7 +34,7 @@ services:
       # KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
       - "/c/Users/dave/dockervolumes/kafka-single/logs:/var/log/kafka"
-      - "/c/Users/dave/dockervolumes/kafka-single/data:/var/opt/kafka"
+      - kafka-data:/var/opt/kafka
   kafka_manager:
       image: dxmann73/kafka-manager
       container_name: kafkamanager
@@ -46,7 +46,8 @@ services:
         - 9000:9000
       environment:
         ZK_HOSTS: "zookeeper:2181"
-
+volumes:
+  kafka-data:
 networks:
   kafkanet:
     driver: bridge
