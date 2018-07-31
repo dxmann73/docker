@@ -7,10 +7,16 @@ ENV SERVICE_USER=svcusr \
     SERVICE_GROUP=svcgrp \
     SERVICE_GID=1000
 
+# TODO maybe fix timezones here in the base image
+# manually add TZ variable as zookeeper does seem to pick up neither /etc/localtime nor /etc/timezone
+# TODO if activated here, remove it from kafka and zookeeper containers, respectively
+# ENV TZ=Europe/Berlin
+
 RUN apk update \
  && apk add bash curl wget \
  && apk add tzdata \
  && cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
+ && cp /usr/share/zoneinfo/Europe/Berlin /etc/timezone \
  && apk del tzdata \
  && rm -rf /var/cache/apk/* \
  && mkdir /opt
