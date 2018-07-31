@@ -42,6 +42,9 @@ RUN  chown -R ${SERVICE_USER}:${SERVICE_GROUP} ${SERVICE_CONF} \
 USER $SERVICE_USER
 WORKDIR $SERVICE_HOME
 
+# manually add TZ variable as kafka does seem to pick up neither /etc/localtime nor /etc/timezone
+ENV TZ=Europe/Berlin
+
 EXPOSE 9092
 # we use CMD here because we want to be able to modify the startup sequence
 CMD ${SERVICE_HOME}/bin/kafka-server-start.sh config/server.properties \

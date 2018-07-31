@@ -36,6 +36,9 @@ RUN  chown -R ${SERVICE_USER}:${SERVICE_GROUP} ${SERVICE_CONF} \
 USER $SERVICE_USER
 WORKDIR $SERVICE_HOME
 
+# manually add TZ variable as zookeeper does seem to pick up neither /etc/localtime nor /etc/timezone
+ENV TZ=Europe/Berlin
+
 EXPOSE 2181
 ENTRYPOINT ["bin/zookeeper-server-start.sh", "config/zookeeper.properties"]
 

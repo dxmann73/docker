@@ -8,6 +8,34 @@ Set up VirtualBox port forwarding in Settings > Network > Erweitert
 
   => see https://www.youtube.com/watch?v=_CZar_4_vbk#
 
+## boot2docker machine TZ settings special for Windows 7 / Docker Toolkit
+You need to add some permanent settings to the docker machine
+as  per the [boot2docker FAQ](https://github.com/boot2docker/boot2docker/blob/17.03.x/doc/FAQ.md#local-customisation-with-persistent-partition)
+- create ```/var/lib/boot2docker/bootlocal.sh``` in the docker machine
+- give exec flag ```chmod u+x bootlocal.sh```
+
+As described in the [Tiny Core Linux forum](http://forum.tinycorelinux.net/index.php?topic=5017.msg27012#msg27012) and [Wiki](http://wiki.tinycorelinux.net/wiki:time_zone)
+```
+cd /var/lib/boot2docker
+tce-fetch.sh tzdata.tcz
+mkdir ext
+sudo mount tzdata.tcz ext -t squashfs -o loop,ro,bs=4096
+# I needed Europe/Berlin; find your timezone by scanning the ./ext directory
+cp ext/usr/local/share/zoneinfo/Europe/Berlin ./Europe-Berlin.tz
+umount ext
+rm -rf ext tzdata.tcz
+```
+Europe-Berlin.tz should survive restarts of the docker machine now.
+
+Finally, copy the timezone file when starting up docker-machine by adding the following to the bootlocal script
+```
+#!/bin/sh
+cp /var/lib/boot2docker/Europe-Berlin.tz /etc/localtime
+```
+
+You should see the correct time now when you enter ```date```
+
+ 
 # TODOs
 - Sort images and push them to the dxmann73 docker registry
 - alias ll in alpine bash and change prompt to show cwd
