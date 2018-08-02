@@ -1,4 +1,4 @@
-package org.palu.probes.boundary;
+package de.memepool.probes.boundary;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

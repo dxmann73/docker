@@ -20,7 +20,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- kafka streams clients libs TODO provided with appserver image -->
+        <!-- kafka streams clients libs TODO provide with appserver image -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>

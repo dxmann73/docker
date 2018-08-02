@@ -1,7 +1,7 @@
-package org.palu.thing.boundary;
+package de.memepool.thing.boundary;
 
-import org.palu.thing.control.ThingControl;
-import org.palu.thing.entity.Thing;
+import de.memepool.thing.control.ThingControl;
+import de.memepool.thing.entity.Thing;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

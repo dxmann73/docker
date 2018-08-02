@@ -1,4 +1,4 @@
-package org.palu;
+package de.memepool;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

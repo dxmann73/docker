@@ -1,6 +1,6 @@
-package org.palu.thing.control;
+package de.memepool.thing.control;
 
-import org.palu.thing.entity.Thing;
+import de.memepool.thing.entity.Thing;
 
 public class ThingControl {
     public Thing getThing(Long id) {
