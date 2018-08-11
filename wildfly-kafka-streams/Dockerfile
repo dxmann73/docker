@@ -17,7 +17,9 @@ RUN curl -O http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_
     && mv $HOME/wildfly-$WILDFLY_VERSION $HOME/wildfly \
     && rm wildfly-$WILDFLY_VERSION.zip
 
-# TODO place kafka files into applibs or so
+# TODO place kafka files into applibs or so => not possible anymore, you need JBoss Modules.
+# And dependencies in the manifest.
+# This is the moment I'm moving over to swarm
 
 ENTRYPOINT ${JBOSS_HOME}/bin/standalone.sh -b=0.0.0.0
 EXPOSE 8080 9990
