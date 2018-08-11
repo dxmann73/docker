@@ -1,4 +1,4 @@
-# demo-backend
+# wildfly-standalone-demo
 Demo backend with wildfly, kafka streams installed, thin war application
 
 # TODOs
@@ -10,10 +10,10 @@ see ```buildAndRun.sh```
 ```
 mvn clean install
 
-docker build -t dxmann73/demo-backend .
+docker build -t dxmann73/wildfly-standalone-demo .
 
-docker rm -f demo-backend || true \
-    && docker run -it -p 8080:8080 -p 4848:4848 --name demo-backend dxmann73/demo-backend
+docker rm -f wildfly-standalone-demo || true \
+    && docker run -it -p 8080:8080 -p 4848:4848 --name wildfly-standalone-demo dxmann73/wildfly-standalone-demo
 ```
 
 ## Debug

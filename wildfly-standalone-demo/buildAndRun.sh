@@ -1,4 +1,4 @@
 #!/bin/bash
-mvn clean install
+bash build.sh
 
 bash re.sh
