@@ -1,7 +1,0 @@
-de\memepool\thing\entity\Thing.class
-de\memepool\JAXRSConfiguration.class
-de\memepool\probes\boundary\PingResource.class
-de\memepool\thing\boundary\ThingResource.class
-de\memepool\thing\entity\IdAble.class
-de\memepool\thing\control\ThingControl.class
-de\memepool\infrastructure\KafkaConnector.class
