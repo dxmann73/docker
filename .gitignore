@@ -7,7 +7,7 @@
 /coverage
 
 # build
-/target
+*/target
 
 # production
 /build
