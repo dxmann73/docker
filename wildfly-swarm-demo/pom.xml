@@ -36,18 +36,22 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- kafka streams clients libs provided via the -hollow.jar-->
+        <!-- kafka streams clients libs provided via the -hollow.jar
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
             <version>1.1.0</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>1.1.0</version>
-            <scope>provided</scope>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>de.memepool</groupId>
+            <artifactId>kafkaapi</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 
@@ -77,6 +81,7 @@
                 </executions>
                 <configuration>
                     <hollow>true</hollow>
+                    <additionalFractions>logging</additionalFractions>
                 </configuration>
             </plugin>
 
