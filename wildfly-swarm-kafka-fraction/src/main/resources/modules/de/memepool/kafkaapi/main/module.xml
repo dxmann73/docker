@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.5" name="de.memepool.kafkaapi">
+    <resources>
+        <artifact name="org.apache.kafka:kafka-streams:1.1.0"/>
+        <artifact name="org.apache.kafka:kafka-clients:1.1.0"/>
+    </resources>
+    <dependencies>
+        <module name="javax.api"/>
+    </dependencies>
+</module>
