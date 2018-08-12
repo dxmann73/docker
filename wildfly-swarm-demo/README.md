@@ -6,15 +6,9 @@ Demo backend with wildfly, kafka streams installed, thin war application
 - map logs into local dir
  
 ## Build
-see ```buildAndRun.sh```
-```
-mvn clean install
+see ```re.sh``` which does a build as well as run the docker container
 
-docker build -t dxmann73/wildfly-swarm-demo .
-
-docker rm -f wildfly-swarm-demo || true \
-    && docker run -it -p 8080:8080 -p 4848:4848 --name wildfly-swarm-demo dxmann73/wildfly-swarm-demo
-```
+After swarm states ```WildFly Swarm is Ready```, you can reach the app (simple ping) under (http://localhost:8080/api/v1/ping)
 
 ## Debug
 Connect to the docker-machine ip (192.168.99.100) at the default port 8787
