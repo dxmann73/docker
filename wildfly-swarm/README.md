@@ -10,6 +10,10 @@ You need two things to use this demo:
 - wildfly-swarm-kafka-fragment (a fragment containing kafka as a wildfly module)
 - wildfly-swarm-demo (to produce the skinny war and hollow jar)
 
+TODO: 
+- better logging. All the kafka logs are missing from the console
+- [add deployment scanner](https://www.phillip-kruger.com/post/hollowjars_deploymentscanner_and_why_wildflyswarm_is_cool/)
+
 ## Build
 ```
 docker build -t dxmann73/wildfly-swarm .
