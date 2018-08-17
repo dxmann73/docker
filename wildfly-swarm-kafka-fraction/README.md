@@ -5,4 +5,4 @@ Wildfly Swarm kafka fragment, see the joda-fraction [here](https://github.com/ja
 ## Usage
 Build artifact using maven.
 Then use the result in conjunction with a skinny war file
-See the wildfly-swarm-demo
+See the wildfly-swarm-demo sub-project

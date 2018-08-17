@@ -6,7 +6,7 @@ Demo backend with wildfly, kafka streams installed, thin war application
 - map logs into local dir
  
 ## Build
-see ```re.sh``` which does a build as well as run the docker container
+see ```re.sh```, which does a build as well as run the docker container
 
 After swarm states ```WildFly Swarm is Ready```, you can reach the app (simple ping) under (http://localhost:8080/api/v1/ping)
 

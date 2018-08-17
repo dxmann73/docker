@@ -2,7 +2,8 @@
 
 Wildfly Swarm capable docker image. See the [Swarm demo](https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/basics.html)
 This image exists for two reasons: 
-First, I wanted to work with really thin wars and deploy kafka and other dependencies into the application server. This is not possible anymore with JBoss due to classloading changes, you need to define modules and make your app depend on those.
+First, I wanted to work with really thin wars and deploy kafka and other dependencies into the application server. There is no easy solution with JBoss anymore, due to classloading changes in AS7. 
+You need to define modules and make your app depend on those.
 Second, there was an [excellent article on skinny wars](https://developers.redhat.com/blog/2017/08/24/the-skinny-on-fat-thin-hollow-and-uber/) which made me want to try WildFly Swarm finally.
 So, here we are.
 
@@ -20,3 +21,5 @@ docker build -t dxmann73/wildfly-swarm .
 ```
 ## Usage
 Use the image in conjunction with a skinny war file
+See the wildfly-swarm-demo project. Basically what it does is build an image based on this one and copy the skinny war into it.
+The image picks up any war files along with the hollow jar.

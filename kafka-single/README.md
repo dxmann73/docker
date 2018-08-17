@@ -14,12 +14,13 @@ Kafka config changes to avoid [missing logs on reboot](https://stackoverflow.com
 Directory layout according to the [Filesystem Hierarchy Standard](https://serverfault.com/questions/24523/meaning-of-directories-on-unix-and-unix-like-systems)
 
 
-Build and usage
---------
+Build
+------
 ```
 docker build -t dxmann73/kafka-single .
 ```
-
+Usage
+------
 ~~~~
 docker run -d  --rm -p 9092:9092 --name kafka dxmann73/kafka-single
 
@@ -30,6 +31,7 @@ docker run -it --rm -p 9092:9092 --name kafka dxmann73/kafka-single \
    kafka-server-start.sh config/server.properties --override zookeeper.connect=192.168.0.1:2181
 ~~~~
 Some kafka commands
+--------------------
 ~~~~
 docker-compose exec kafka kafka-topics.sh --create --topic foo --partitions 1 --replication-factor 1 --if-not-exists --zookeeper localhost:2181
 docker-compose exec kafka bash -c "seq 42 | kafka-console-producer.sh --request-required-acks 1 --broker-list localhost:9092 --topic foo && echo 'Produced 42 messages.'"

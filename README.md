@@ -53,36 +53,52 @@ docker-compose logs zookeeper | grep binding
 docker-compose logs kafka | grep start
 ```
 
-# quickstart 
+# Kafka Quickstart 
 
 as per the [confluent docs](https://docs.confluent.io/current/installation/docker/docs/quickstart.html)
 
+First, start the cluster in detached mode with 
 ```
-echo creating topic foo
+docker compose up -d
+```
+You should be able to connect to kafka-manager, but let's do things the hard way for now :-)
+
+Create a topic
+
+```
+# create topic foo
 docker-compose exec kafka \
 kafka-topics.sh --create --topic foo --partitions 1 --replication-factor 1 --if-not-exists --zookeeper localhost:2181
 
-echo check topic foo status
+# check topic foo status
 docker-compose exec kafka \
 kafka-topics.sh --describe --topic foo --zookeeper localhost:2181
 
-echo check general topic status
+# check general topic status
 docker-compose exec kafka \
 kafka-topics.sh --describe --zookeeper localhost:2181
 
-echo creating 42 messages
+# create 42 messages
 docker-compose exec kafka \
 bash -c "seq 42 | kafka-console-producer.sh --request-required-acks 1 --broker-list localhost:9092 --topic foo && echo 'Produced 42 messages.'"
 
-echo reading 42 messages
+# read 42 messages
 docker-compose exec kafka \
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic foo --from-beginning --max-messages 42
+```
+That's it! 
 
-echo stopping all services
+Finally, stop the cluster using 
+```
+docker-compose stop
+# or, if you want to remove the cluster state
 docker-compose down
 ```
 
+When stuff goes wrong, you can use
 ```
+docker logs kafka
+# or look into the volume
 docker volume ls
 docker volume inspect zookeeper-logs
 ```

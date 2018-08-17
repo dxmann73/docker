@@ -15,11 +15,6 @@ Build
 docker build -t dxmann73/wildfly-kafka-streams .
 ```
 
-Local:
-```
-docker build -t wildfly-kafka-streams .
-```
-
 Usage
 --------
 

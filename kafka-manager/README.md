@@ -12,9 +12,9 @@ sbt clean dist
 
 This will create a zip in ```kafka-manager-1.3.3.18\target\universal\kafka-manager-1.3.3.18.zip```
 
-Copy this file here and adapt the version in the Dockerfile
+Copy this file to the current directory ```.``` and adapt the version in the Dockerfile
 
-Note that, by default, kafka manager will bind to port 9000 internally.
+##### Note that kafka manager will bind to port 9000 by default.
 
 
 Build
@@ -26,6 +26,6 @@ Usage
 ------- 
 Start the kafka / zookeeper cluster, then run
 ```
-docker run -d --rm -p 9000:9000 --name kafka-manager kafka-manager .
+docker run -d --rm -p 9000:9000 --name kafka-manager dxmann73/kafka-manager .
 ```
 and connect to http://localhost:9000
