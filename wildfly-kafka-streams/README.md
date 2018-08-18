@@ -26,6 +26,6 @@ Usage
 --------
 Run the container without deployments:
 ```
-docker run -it -p 8080:8080 -p 4848:4848 --name wildfly-kafka-streams dxmann73/wildfly-kafka-streams
+docker run -d --rm -p 8080:8080 -p 4848:4848 --name wildfly-kafka-streams dxmann73/wildfly-kafka-streams
 ```
 If you want to add a deployment, see the ```wildfly-kafka-streams-demo``` Dockerfile
