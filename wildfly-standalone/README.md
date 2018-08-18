@@ -24,7 +24,7 @@ After the startup sequence has completed (approx. 13s) you can reach the wildfly
   - By default, only C:\Users is mounted on windows machines (as /c/Users, note the lowercase c)
 ```
 docker run -d  --rm --volume /c/Users/dave/dockervolumes/wildfly-standalone/logs:/opt/jboss/wildfly/standalone/log \
-           -p 8080:8080 --name wildfly dxmann73/wildfly-standalone
+           -p 8080:8080 --name wildfly-standalone dxmann73/wildfly-standalone
 ```
 ### Connect to the container in detached mode
 ```

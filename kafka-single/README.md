@@ -22,9 +22,9 @@ docker build -t dxmann73/kafka-single .
 Usage
 ------
 ~~~~
-docker run -d  --rm -p 9092:9092 --name kafka dxmann73/kafka-single
+docker run -d  --rm -p 9092:9092 --name kafka-single dxmann73/kafka-single
 
-docker run -it --rm -p 9092:9092 --name kafka dxmann73/kafka-single
+docker run -it --rm -p 9092:9092 --name kafka-single dxmann73/kafka-single
 
 # or if you want to change the zookeeper instance
 docker run -it --rm -p 9092:9092 --name kafka dxmann73/kafka-single \
