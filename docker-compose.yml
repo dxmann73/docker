@@ -37,7 +37,7 @@ services:
       - kafka-data:/var/opt/kafka
   kafka_manager:
       image: dxmann73/kafka-manager
-      container_name: kafkamanager
+      container_name: kafka_manager
       depends_on:
         - kafka
       networks:
