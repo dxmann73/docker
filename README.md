@@ -103,3 +103,11 @@ docker volume ls
 docker volume inspect zookeeper-logs
 ```
 
+# Usage with standalone JBoss / Wildfly
+The servers in this docker compose cluster advertise themselves as configured in ADVERTISED_HOSTS.
+Thus, you need to add the advertised host / server names in the ```hosts``` file as follows:
+```
+192.168.99.100   kafkaserver
+192.168.99.100   zooserver
+```
+
