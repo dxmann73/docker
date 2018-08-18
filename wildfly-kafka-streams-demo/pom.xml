@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.memepool</groupId>
-    <artifactId>wildfly-standalone-demo</artifactId>
+    <artifactId>wildfly-kafka-streams-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -24,21 +24,31 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Kafka streams client libs -->
+        <!-- Kafka streams client libs TODO check / update version -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
             <version>1.1.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>1.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Kafka Streams uses slf4j, so we need to add a binding for log4j 1.3. -->
+        <!-- TODO lift to log4j 2 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>wildfly-standalone-demo</finalName>
+        <finalName>wildfly-kafka-streams-demo</finalName>
 
         <plugins>
             <!-- remove the parts that change even if the artifacts are the same (timestamps mostly)
@@ -56,6 +66,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- TODO check why / if actually needed -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
