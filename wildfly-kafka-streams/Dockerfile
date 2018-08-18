@@ -17,7 +17,7 @@ RUN curl -O http://download.jboss.org/${SERVICE_NAME}/${SERVICE_VERSION}/${SERVI
   && rm ${SERVICE_RELEASE}.zip
 
 # add global module
-COPY ./wildfly-module-definition/* ${SERVICE_HOME}/modules/
+COPY ./wildfly-module-definition ${SERVICE_HOME}/modules/
 # replace standalone.xml
 COPY ./wildfly-config/standalone.xml ${SERVICE_HOME}/standalone/configuration/
 
