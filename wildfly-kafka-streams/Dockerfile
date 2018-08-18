@@ -1,25 +1,33 @@
 FROM dxmann73/alpine-openjdk
 
-# based on alpine-wildfly from Jørgen Mittet <njmittet@gmail.com>
 MAINTAINER David Mann <dxmann73@gmail.com>
 
-ENV WILDFLY_VERSION 12.0.0.Final
-ENV JBOSS_HOME /opt/jboss/wildfly
-ENV DEPLOYMENT_DIR ${JBOSS_HOME}/standalone/deployments/
+ENV SERVICE_NAME=wildfly \
+    SERVICE_VERSION=12.0.0.Final
+ENV SERVICE_RELEASE=${SERVICE_NAME}-${SERVICE_VERSION}
+ENV SERVICE_HOME=/opt/${SERVICE_RELEASE}
+# targets for deployment and logging
+ENV DEPLOYMENT_DIR=${SERVICE_HOME}/standalone/deployments/ \
+    SERVICE_LOG_DIR=${SERVICE_HOME}/standalone/log/
 
-USER root
-RUN mkdir -p /opt/jboss && adduser -D -h /opt/jboss jboss
+# Download and install wildfly
+WORKDIR /opt
+RUN curl -O http://download.jboss.org/${SERVICE_NAME}/${SERVICE_VERSION}/${SERVICE_RELEASE}.zip \
+  && unzip ${SERVICE_RELEASE}.zip \
+  && rm ${SERVICE_RELEASE}.zip
 
-USER jboss
-WORKDIR /opt/jboss
-RUN curl -O http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.zip \
-    && unzip wildfly-$WILDFLY_VERSION.zip \
-    && mv $HOME/wildfly-$WILDFLY_VERSION $HOME/wildfly \
-    && rm wildfly-$WILDFLY_VERSION.zip
+# add global module
+COPY ./wildfly-module-definition/* ${SERVICE_HOME}/modules/
+# replace standalone.xml
+COPY ./wildfly-config/standalone.xml ${SERVICE_HOME}/standalone/configuration/
 
-# TODO place kafka files into applibs or so => not possible anymore, you need JBoss Modules.
-# And dependencies in the manifest.
-# This is the moment I'm moving over to swarm
+# change owner and make scripts executable
+RUN  chmod +x ${SERVICE_HOME}/bin/*.sh \
+  && chown -R ${SERVICE_USER}:${SERVICE_GROUP} ${SERVICE_HOME}
 
-ENTRYPOINT ${JBOSS_HOME}/bin/standalone.sh -b=0.0.0.0
+# run as the service user
+USER $SERVICE_USER
+WORKDIR $SERVICE_HOME
+
 EXPOSE 8080 9990
+ENTRYPOINT ${SERVICE_HOME}/bin/standalone.sh -b=0.0.0.0
