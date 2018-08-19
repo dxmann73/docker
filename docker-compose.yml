@@ -1,5 +1,5 @@
 ---
-version: '3.2'
+version: '3.3'
 # https://docs.docker.com/compose/compose-file/#long-syntax-3
 services:
   zookeeper:
@@ -13,6 +13,7 @@ services:
     volumes:
       - "/c/Users/dave/dockervolumes/zookeeper-single/logs:/var/log/zookeeper"
       - "/c/Users/dave/dockervolumes/zookeeper-single/data:/var/opt/zookeeper"
+    stop_grace_period: 30s
   kafka:
     image: dxmann73/kafka-single
     container_name: kafka
@@ -35,6 +36,7 @@ services:
     volumes:
       - "/c/Users/dave/dockervolumes/kafka-single/logs:/var/log/kafka"
       - kafka-data:/var/opt/kafka
+    stop_grace_period: 30s
   kafka_manager:
       image: dxmann73/kafka-manager
       container_name: kafka_manager
