@@ -1,11 +1,10 @@
----
 version: '3.3'
-# https://docs.docker.com/compose/compose-file/#long-syntax-3
+   # https://docs.docker.com/compose/compose-file/#long-syntax-3
 services:
   zookeeper:
     image: dxmann73/zookeeper-single
     container_name: zookeeper
-    hostname: zooserver
+    hostname: zookeeper
     networks:
       - kafkanet
     ports:
@@ -19,14 +18,14 @@ services:
     container_name: kafka
     depends_on:
       - zookeeper
-    hostname: kafkaserver
+    hostname: kafka
     networks:
       - kafkanet
     ports:
       - 9092:9092
     environment:
       ZK_HOSTS: zookeeper:2181
-      ADVERTISED_HOST: kafkaserver
+      ADVERTISED_HOST: kafka
       ADVERTISED_PORT: 9092
       # later / check if needed
       # KAFKA_BROKER_ID: 0
@@ -37,17 +36,29 @@ services:
       - "/c/Users/dave/dockervolumes/kafka-single/logs:/var/log/kafka"
       - kafka-data:/var/opt/kafka
     stop_grace_period: 30s
-  kafka_manager:
-      image: dxmann73/kafka-manager
-      container_name: kafka_manager
-      depends_on:
-        - kafka
-      networks:
-        - kafkanet
-      ports:
-        - 9000:9000
-      environment:
-        ZK_HOSTS: "zookeeper:2181"
+  kafka-manager:
+    image: dxmann73/kafka-manager
+    container_name: kafka-manager
+    depends_on:
+      - kafka
+    networks:
+      - kafkanet
+    ports:
+      - 9000:9000
+    environment:
+      ZK_HOSTS: "zookeeper:2181"
+  wildfly:
+    image: dxmann73/wildfly-kafka-streams-demo
+    container_name: wildfly
+    depends_on:
+      - kafka
+      - kafka-manager
+    networks:
+      - kafkanet
+    ports:
+      - 8080:8080
+      - 4848:4848
+      - 8787:8787
 volumes:
   kafka-data:
 networks:
