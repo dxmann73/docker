@@ -9,7 +9,6 @@ ENV ZK_HOSTS=${DOCKER_MACHINE_IP}:2181 \
     ADVERTISED_HOST=${DOCKER_MACHINE_IP} \
     ADVERTISED_PORT=9092
 
-# TODO change settings.xml to the 2.0.0 version, enable.idempotence=true  https://jaxenter.de/kafka-0-11-60108  !!
 ENV SERVICE_HOME=/opt/kafka \
     SERVICE_NAME=kafka \
     SCALA_VERSION=2.12 \
