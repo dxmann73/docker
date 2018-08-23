@@ -37,14 +37,6 @@
             <version>2.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Kafka Streams uses slf4j, so we need to add a binding for log4j 1.3. -->
-        <!-- TODO lift to log4j 2 -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -66,7 +58,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- TODO check why / if actually needed -->
+            <!-- don't generate pom.properties as they make the artifacts change every build -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>

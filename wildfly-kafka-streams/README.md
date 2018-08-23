@@ -6,6 +6,8 @@ Wildfly standalone image with all external dependencies (Kafka Streams, slf4j, e
 All dependencies can be determined / rebuilt by removing ```<scope>provided</scope>``` from the pom.xml in the 
 ```wildfly-kafka-streams-demo``` project (but please leave ```javaee-api``` as provided ;-)).
 
+_IMPORTANT NOTE_ First search in wildfly-12.0.0.Final/modules/system/layers/base if the module is already part of the server installation!
+
 The global module is added to the server manually by
 - copying the module contents into the appropriate place in wildfly (it could also be symlink'ed)
 - replacing the ```standalone.xml``` with a modified version, which contains a global module in the ```:ee``` subsystem section

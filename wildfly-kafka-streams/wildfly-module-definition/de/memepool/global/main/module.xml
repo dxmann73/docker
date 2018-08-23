@@ -2,6 +2,8 @@
 <module xmlns="urn:jboss:module:1.1" name="de.memepool.global">
     <dependencies>
         <module name="javaee.api"/>
+		<module name="javax.ws.rs.api"/>
+		<module name="org.slf4j"/>
     </dependencies>
  
     <resources>
@@ -10,14 +12,10 @@
 		<resource-root path="jackson-annotations-2.9.0.jar"/>
 		<resource-root path="jackson-core-2.9.6.jar"/>
 		<resource-root path="jackson-databind-2.9.6.jar"/>
-        <resource-root path="javax.ws.rs-api-2.1.jar"/>
 		<resource-root path="kafka-clients-2.0.0.jar"/>
 		<resource-root path="kafka-streams-2.0.0.jar"/>
-		<resource-root path="log4j-1.2.17.jar"/>
 		<resource-root path="lz4-java-1.4.1.jar"/>
 		<resource-root path="rocksdbjni-5.7.3.jar"/>
-		<resource-root path="slf4j-api-1.7.25.jar"/>
-		<resource-root path="slf4j-log4j12-1.7.5.jar"/>
 		<resource-root path="snappy-java-1.1.7.1.jar"/>
     </resources>
 </module>
