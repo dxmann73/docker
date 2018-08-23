@@ -59,6 +59,9 @@ services:
       - 8080:8080
       - 4848:4848
       - 8787:8787
+    volumes:
+      - "/c/Users/dave/dockervolumes/wildfly-kafka/logs:/opt/wildfly-12.0.0.Final/standalone/log"
+      - "/c/Users/dave/dockervolumes/wildfly-kafka/deployments:/opt/wildfly-12.0.0.Final/standalone/deployments"
     stop_grace_period: 30s
 volumes:
   kafka-data:
